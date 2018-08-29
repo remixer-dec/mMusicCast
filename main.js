@@ -1,6 +1,8 @@
 // import { setTimeout } from 'timers';
-
 const electron = require('electron')
+const {adblock} = require('./adblock')
+const ADBLOCK_ENABLED = false
+
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -23,11 +25,27 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 800, height: 600, webPreferences:{zoomFactor: 0.2}})
+  // Toggle adblock
+  if(ADBLOCK_ENABLED) adblock(mainWindow)
   mainWindow.setMenu(null)
   // and load the index.html of the app.
   mainWindow.loadURL(homePageUrl)
-
+  mainWindow.webContents.on('did-finish-load', () => {
+    let code = `
+      window.addEventListener('dblclick',(e) => {
+        /*toggle fullscreen mode on double click*/
+        document.webkitIsFullScreen ? document.webkitCancelFullScreen() : document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT)
+      })
+      if(window.location.href.match(/youtube\.com/img)) {
+        /*allow background playback*/
+        window.addEventListener('visibilitychange', (e) => {
+          e.stopPropagation();
+        }, true);
+      }
+    `;
+    mainWindow.webContents.executeJavaScript(code);
+  });
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 

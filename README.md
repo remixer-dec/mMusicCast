@@ -1,7 +1,7 @@
 # mMusicCast
 
-Simple chromecast emulator wriiten in javascript on top of electron.
-### Extra features of this version:
+Simple chromecast emulator written in javascript on top of electron.
+### Extra features of this fork:
 * 4K Support in YouTube app*  
 * AdBlock**  
 * Background Playback  
@@ -11,8 +11,12 @@ Simple chromecast emulator wriiten in javascript on top of electron.
 **- disabled by default, change constant in main.js to enable it. Designed only for YT app.  
 
 ### Supported applications:
-* YouTube
-* Spotify (work in progress)
+
+* YouTube - all platforms
+* Spotify - Spotify connect using librespot (requires premium subscription and unix based os)
+
+Currently Spotify playback doesn't give any feedback in the UI. For a future release, the creator of original version plans to display what is playing and add controls.
+
 
 ### Platforms:
 * macOS
@@ -22,7 +26,7 @@ Simple chromecast emulator wriiten in javascript on top of electron.
 
 
 ### Install & run
-`npm install`
-`npm start`
+* `npm install`
+* `npm start`
 
-Open youtube app on your phone and enjoy streaming ;) 
+Open YouTube or Spotify app on your phone and enjoy streaming ;) 

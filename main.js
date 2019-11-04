@@ -60,7 +60,7 @@ function createWindow () {
 
 
 }
-const setupWS = () => { 
+const setupWS = () => {
   ws  = new WebSocket("ws://localhost:8008/stage");
 
   ws.onmessage = function (e) {
@@ -69,7 +69,7 @@ const setupWS = () => {
       if(cmd.cmd == "show") {
 
           var url = cmd.url;
-          mainWindow.loadURL(url);
+          mainWindow.loadURL(url,{userAgent:"Mozilla/5.0 (Unknown; Linux armv7l) AppleWebKit/537.1+ (KHTML, like Gecko) Safari/537.1+ LG Browser/6.00.00(+mouse+3D+SCREEN+TUNER; LGE;43LK5760PTA; 04.25.05; 0x00000001;); LG NetCast.TV-2013 /04.25.05 (LG, 43LK5760PTA, wired)"});
         // window.location = url;
       } else if(cmd.cmd == "idle") {
           // $('#idle_container').fadeIn('slow');

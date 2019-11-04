@@ -2,6 +2,7 @@
 
 Simple chromecast emulator written in javascript on top of electron.
 ### Extra features of this fork:
+* YouTube app still works after [official deprecation](https://youtube.com/tv)  
 * 4K Support in YouTube app*  
 * AdBlock**  
 * Background Playback  

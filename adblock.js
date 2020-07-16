@@ -1,5 +1,6 @@
 module.exports.adblock = (browserWindow) => {
-  containsAds = (url) =>{
+  containsAds = (url) => {
+  	if (url.match(/stats\/(playback|watchtime)/)) return false
     const YT = 'https://www.youtube.com';
     var blackListedUrls = [
       "https://ad.doubleclick.net/*",
@@ -28,7 +29,8 @@ module.exports.adblock = (browserWindow) => {
       YT + "/ptracking*",
       YT + "/*/stats/*",
       YT + "/service_ajax*",
-      YT + "/sw.js*"
+      YT + "/sw.js*", 
+      YT + "/get_video_info*=adunit"
     ];
     function checkUrlPatternMatches(url, pattern) {
       var components = pattern.split("*"),

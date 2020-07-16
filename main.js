@@ -42,6 +42,9 @@ function createWindow () {
         window.addEventListener('visibilitychange', (e) => {
           e.stopPropagation();
         }, true);
+        window.addEventListener('webkitvisibilitychange', (e) => {
+          e.stopPropagation();
+        }, true);
       }
     `;
     mainWindow.webContents.executeJavaScript(code);
